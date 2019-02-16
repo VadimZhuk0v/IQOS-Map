@@ -12,6 +12,7 @@ import androidx.constraintlayout.widget.ConstraintSet
 import androidx.lifecycle.Observer
 import androidx.transition.ChangeBounds
 import androidx.transition.TransitionManager
+import com.github.florent37.runtimepermission.RuntimePermission
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
@@ -21,7 +22,6 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.maps.android.clustering.ClusterManager
-import com.tbruyelle.rxpermissions2.RxPermissions
 import com.vadim.iqosmap.BuildConfig
 import com.vadim.iqosmap.R
 import com.vadim.iqosmap.base.BaseFragment
@@ -197,12 +197,8 @@ class MapFragment : BaseFragment<MapViewModel, FragmentMapBinding>(), OnMapReady
 
     @SuppressLint("CheckResult")
     private fun enableLocation() {
-        if (RxPermissions(this).isGranted(Manifest.permission.ACCESS_FINE_LOCATION)) {
-            onLocationPermission(true)
-        } else {
-            RxPermissions(this)
-                .request(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION)
-                .subscribe { onLocationPermission(it) }
+        RuntimePermission.askPermission(this, Manifest.permission.ACCESS_FINE_LOCATION).ask {
+            onLocationPermission(it.isAccepted)
         }
     }
 
