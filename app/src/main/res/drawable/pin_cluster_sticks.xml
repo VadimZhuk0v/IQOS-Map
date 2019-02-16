@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="oval">
+
+            <solid android:color="@color/category_sticks" />
+
+        </shape>
+    </item>
+
+    <item>
+        <shape
+            android:innerRadius="@dimen/ic_cluster_inner_radius"
+            android:shape="ring"
+            android:thickness="@dimen/ic_cluster_thickness"
+            android:useLevel="false">
+            <solid android:color="@color/white" />
+            <size
+                android:width="@dimen/ic_cluster_size"
+                android:height="@dimen/ic_cluster_size" />
+        </shape>
+    </item>
+</layer-list>

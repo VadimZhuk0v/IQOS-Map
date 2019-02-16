@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ContentDescription" >
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.vadim.iqosmap.ui.filter.FilterViewModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".ui.filter.FilterFragment">
+
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/ivIcon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    app:srcCompat="@mipmap/ic_launcher"
+                    android:layout_marginBottom="8dp"/>
+
+                <include layout="@layout/separator"/>
+
+                <LinearLayout
+                    android:id="@+id/llSticks"
+                    android:paddingTop="@dimen/margin"
+                    android:paddingBottom="@dimen/margin"
+                    android:clipToPadding="false"
+                    style="@style/FilterContainerStyle"
+                    android:foreground="@drawable/ripple_sticks">
+
+                    <ImageView
+                        android:id="@+id/ivIconSticks"
+                        style="@style/ImageViewFilterIcon"
+                        android:src="@drawable/icon_sticks_pale"
+                        tools:ignore="ContentDescription" />
+
+                    <LinearLayout
+                        style="@style/ContainerFilterTitleDescriptions"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/TextViewFilterTitle"
+                            android:text="@string/filter_sticks_title" />
+
+                        <TextView
+                            style="@style/TextViewFilterDescription"
+                            android:text="@string/filter_sticks_descriptions" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llDevices"
+                    style="@style/FilterContainerStyle"
+                    android:foreground="@drawable/ripple_devices">
+
+                    <ImageView
+                        android:id="@+id/ivIconDevices"
+                        style="@style/ImageViewFilterIcon"
+                        android:src="@drawable/icon_devices_pale"
+                        tools:ignore="ContentDescription" />
+
+                    <LinearLayout
+                        style="@style/ContainerFilterTitleDescriptions"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/TextViewFilterTitle"
+                            android:text="@string/filter_devices_title" />
+
+                        <TextView
+                            style="@style/TextViewFilterDescription"
+                            android:text="@string/filter_devices_descriptions" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llAccessories"
+                    style="@style/FilterContainerStyle"
+                    android:foreground="@drawable/ripple_accessories">
+
+                    <ImageView
+                        android:id="@+id/ivIconAccessories"
+                        style="@style/ImageViewFilterIcon"
+                        android:src="@drawable/icon_accessories_pale"
+                        tools:ignore="ContentDescription" />
+
+                    <LinearLayout
+                        style="@style/ContainerFilterTitleDescriptions"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/TextViewFilterTitle"
+                            android:text="@string/filter_accessories_title" />
+
+                        <TextView
+                            style="@style/TextViewFilterDescription"
+                            android:text="@string/filter_accessories_descriptions" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llService"
+                    style="@style/FilterContainerStyle"
+                    android:foreground="@drawable/ripple_service">
+
+                    <ImageView
+                        android:id="@+id/ivIconService"
+                        style="@style/ImageViewFilterIcon"
+                        android:src="@drawable/icon_service_pale"
+                        tools:ignore="ContentDescription" />
+
+                    <LinearLayout
+                        style="@style/ContainerFilterTitleDescriptions"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/TextViewFilterTitle"
+                            android:text="@string/filter_service_title" />
+
+                        <TextView
+                            style="@style/TextViewFilterDescription"
+                            android:text="@string/filter_service_descriptions" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llFriendly"
+                    style="@style/FilterContainerStyle"
+                    android:foreground="@drawable/ripple_friendly">
+
+                    <ImageView
+                        android:id="@+id/ivIconFriendly"
+                        style="@style/ImageViewFilterIcon"
+                        android:src="@drawable/icon_friendly_pale"
+                        tools:ignore="ContentDescription" />
+
+                    <LinearLayout
+                        style="@style/ContainerFilterTitleDescriptions"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/TextViewFilterTitle"
+                            android:text="@string/filter_friendly_title" />
+
+                        <TextView
+                            style="@style/TextViewFilterDescription"
+                            android:text="@string/filter_friendly_descriptions" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <include layout="@layout/separator"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:id="@+id/flCancel"
+                        android:foreground="@drawable/ripple_cancel"
+                        style="@style/ContainerFilterActions">
+
+                        <ImageView
+                            style="@style/ImageViewFilterActions"
+                            android:src="@drawable/ic_cancel"/>
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/flApply"
+                        android:foreground="@drawable/ripple_apply"
+                        style="@style/ContainerFilterActions">
+
+                        <ImageView
+                            style="@style/ImageViewFilterActions"
+                            android:src="@drawable/ic_apply" />
+
+                    </FrameLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

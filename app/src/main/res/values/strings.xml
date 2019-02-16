@@ -1,0 +1,31 @@
+<resources>
+
+    <string name="app_name">Iqos Map</string>
+    <string name="google_map_api_key">AIzaSyAhBFrYr_ljelfVIDW37WJOqsTpFYWpIuw</string>
+
+    <string name="filter_sticks_title">Стики</string>
+    <string name="filter_sticks_descriptions">Точки продажи стиков</string>
+
+    <string name="filter_devices_title">Девайсы</string>
+    <string name="filter_devices_descriptions">Места где можно купить девайсы IQOS</string>
+
+    <string name="filter_accessories_title">Аксесуары</string>
+    <string name="filter_accessories_descriptions">Кастомизация, зарядные устройства</string>
+
+    <string name="filter_service_title">Сервис</string>
+    <string name="filter_service_descriptions">Ремонт, обслуживание, замена</string>
+
+    <string name="filter_friendly_title">Friendly</string>
+    <string name="filter_friendly_descriptions">Толерантные заведения</string>
+
+    <string name="cancel">Отмена</string>
+    <string name="apply">Применить</string>
+
+    <string name="error_internet_connection">Отсутствует интернет соединение</string>
+
+    <string name="repeat">Повторить</string>
+    <string name="address_format">Адресс: %s</string>
+    <string name="phone_format">Телефон: %s</string>
+    <string name="schedulers_format">Время работы: %s</string>
+
+</resources>
