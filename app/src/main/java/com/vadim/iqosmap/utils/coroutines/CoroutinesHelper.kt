@@ -1,6 +1,7 @@
 package com.vadim.iqosmap.utils.coroutines
 
 import android.content.Context
+import android.os.Build
 import com.vadim.iqosmap.BuildConfig
 import com.vadim.iqosmap.utils.network.InternetUnreachableException
 import com.vadim.iqosmap.utils.network.NetworkUtils
@@ -84,7 +85,13 @@ class CoroutinesHelper(private val context: Context, private var coroutineContex
     }
 
     private fun checkInternetConnection(context: Context) {
-        if (NetworkUtils.isInternetAvailable(context).not()) throw InternetUnreachableException()
+        val res =
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+                NetworkUtils.isInternetAvailable(context)
+            else
+                NetworkUtils.isInternetAvailablePreM(context)
+
+        if (res.not()) throw InternetUnreachableException()
     }
 
 }
