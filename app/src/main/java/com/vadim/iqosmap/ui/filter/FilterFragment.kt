@@ -83,10 +83,10 @@ class FilterFragment : BaseFragment<FilterViewModel, FragmentFilterBinding>() {
 
         binding.flApply.setOnClickListener {
             viewModel.enableFilters()
-            (activity as? IFilterCallBack)?.hideFilterFragment()
+            (parentFragment as? IFilterCallBack)?.hideFilterFragment()
         }
 
-        binding.flCancel.setOnClickListener { (activity as? IFilterCallBack)?.hideFilterFragment() }
+        binding.flCancel.setOnClickListener { (parentFragment as? IFilterCallBack)?.hideFilterFragment() }
     }
 
     private fun reverseCategory(categoryEnum: CategoryEnum, imageView: ImageView) {
