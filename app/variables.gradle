@@ -1,0 +1,12 @@
+android {
+    defaultConfig {
+        buildConfigField 'String', 'BASE_URL', '"http://localhost:8099/"'
+        buildConfigField "String", "IQOS_PHONE", '"0800507807"'
+        buildConfigField "String", "IQOS_SITE", '"https://www.iqos.com.ua"'
+        buildConfigField 'int', 'TIMEOUT_CONNECT', '20000'
+        buildConfigField 'int', 'TIMEOUT_WRITE', '60000'
+        buildConfigField 'int', 'TIMEOUT_READ', '60000'
+        buildConfigField "int", "DOWNLOADING_POINTS_LIMIT", "5000"
+        buildConfigField "Long", "HOLDER_LOADING_TIME", "1000L"
+    }
+}
