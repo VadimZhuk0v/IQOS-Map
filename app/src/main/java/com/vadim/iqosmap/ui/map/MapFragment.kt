@@ -195,7 +195,6 @@ class MapFragment : BaseFragment<MapViewModel, FragmentMapBinding>(), OnMapReady
         })
     }
 
-    @SuppressLint("CheckResult")
     private fun enableLocation() {
         RuntimePermission.askPermission(this, Manifest.permission.ACCESS_FINE_LOCATION).ask {
             onLocationPermission(it.isAccepted)

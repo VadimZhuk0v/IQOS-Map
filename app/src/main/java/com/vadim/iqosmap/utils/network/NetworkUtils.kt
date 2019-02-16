@@ -2,7 +2,6 @@ package com.vadim.iqosmap.utils.network
 
 import android.content.Context
 import android.net.ConnectivityManager
-import io.reactivex.Single
 
 
 object NetworkUtils {

@@ -10,18 +10,18 @@ import androidx.lifecycle.OnLifecycleEvent
 import com.vadim.iqosmap.BuildConfig
 import com.vadim.iqosmap.R
 import com.vadim.iqosmap.utils.MLD
+import com.vadim.iqosmap.utils.coroutines.CoroutinesCancel
 import com.vadim.iqosmap.utils.network.InternetUnreachableException
 import com.vadim.iqosmap.view.PlaceHolderView
-import io.reactivex.disposables.CompositeDisposable
 
-@Suppress("ImplicitThis")
+@Suppress("ImplicitThis", "LeakingThis")
 abstract class BaseViewModel(app: Application) : AndroidViewModel(app), LifecycleObserver {
 
     init {
         inject()
     }
 
-    protected val compositeDisposable = CompositeDisposable()
+    protected val coroutinesRemove = CoroutinesCancel()
 
     open val ldProgress = MLD<Boolean>().apply { value = false }
     open val ldHolderState = MLD<PlaceHolderView.HolderState>().apply { value = PlaceHolderView.HolderState.Progress }
@@ -29,7 +29,7 @@ abstract class BaseViewModel(app: Application) : AndroidViewModel(app), Lifecycl
     abstract fun inject()
 
     override fun onCleared() {
-        compositeDisposable.clear()
+        coroutinesRemove.clear()
 
         super.onCleared()
     }

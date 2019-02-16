@@ -106,15 +106,12 @@ class PlaceHolderView : FrameLayout {
 
     fun hideProgress() {
         dataContainer?.visibility = View.VISIBLE
-        val onFinish = {
-            llErrorContainer.visibility = View.GONE
-            lavProgress.visibility = View.GONE
-            tvRepeat.visibility = View.GONE
+        llErrorContainer.visibility = View.GONE
+        lavProgress.visibility = View.GONE
+        tvRepeat.visibility = View.GONE
 
-            state = HolderState.Hide
-            this.visibility = View.GONE
-        }
-        UiUtils.hideViewWithReveal(this, onFinish)
+        state = HolderState.Hide
+        this.visibility = View.GONE
     }
 
     fun setOnRepeatClickListener(event: () -> Unit) {

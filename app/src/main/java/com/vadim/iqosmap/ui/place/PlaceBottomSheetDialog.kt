@@ -3,7 +3,6 @@ package com.vadim.iqosmap.ui.place
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
 import android.view.Gravity
 import android.view.View
 import android.widget.FrameLayout
@@ -12,7 +11,6 @@ import android.widget.LinearLayout
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.google.android.gms.maps.model.LatLng
-import com.vadim.iqosmap.BuildConfig
 import com.vadim.iqosmap.R
 import com.vadim.iqosmap.base.BaseBottomSheetDialog
 import com.vadim.iqosmap.databinding.BottomSheetDialogPlaceBinding
@@ -49,7 +47,6 @@ class PlaceBottomSheetDialog : BaseBottomSheetDialog<PlaceViewModel, BottomSheet
 
         observeClose()
         observePlace()
-        startProgress()
     }
 
     private fun setListeners(phone: String, latLng: LatLng, address: String) {
@@ -85,7 +82,6 @@ class PlaceBottomSheetDialog : BaseBottomSheetDialog<PlaceViewModel, BottomSheet
             binding.tvName.text = it.name
             binding.tvSchedulers.text = getString(R.string.schedulers_format, it.schedule)
             binding.tvAddress.text = getString(R.string.address_format, it.address)
-            viewModel.hideProgresMaybe()
         })
     }
 
@@ -98,7 +94,7 @@ class PlaceBottomSheetDialog : BaseBottomSheetDialog<PlaceViewModel, BottomSheet
     private fun setCategories(categories: List<CategoryEnum>) {
         val size = resources.getDimensionPixelSize(R.dimen.place_layer_size)
         categories.forEach {
-            val frame = FrameLayout(context)
+            val frame = FrameLayout(context ?: return)
             frame.layoutParams = LinearLayout.LayoutParams(0, size).apply { weight = 1F }
 
             val imageView = ImageView(context)
@@ -121,10 +117,4 @@ class PlaceBottomSheetDialog : BaseBottomSheetDialog<PlaceViewModel, BottomSheet
         }
     }
 
-    private fun startProgress() {
-        Handler().postDelayed({
-                                  viewModel.isHolderTimeFinish = true
-                                  viewModel.hideProgresMaybe()
-                              }, BuildConfig.HOLDER_LOADING_TIME)
-    }
 }
