@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:352464747158:android:84fde75016cc88bb",
+        "mobilesdk_app_id": "1:352464747158:android:52af72d3ac74bb4e",
         "android_client_info": {
-          "package_name": "com.vm.iqosmap"
+          "package_name": "com.vadmax.iqosmap"
         }
       },
       "oauth_client": [
