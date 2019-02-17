@@ -63,4 +63,10 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.1'
     //------------------------------------------------------------------------------------------------------------------
 
+    //Firebase----------------------------------------------------------------------------------------------------------
+    implementation "com.google.firebase:firebase-core:$firebase_version"
+    //------------------------------------------------------------------------------------------------------------------
+
 }
+
+apply plugin: 'com.google.gms.google-services'
