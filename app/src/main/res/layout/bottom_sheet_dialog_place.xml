@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.vadim.iqosmap.base.BaseViewModel" />
+            type="com.vm.iqosmap.base.BaseViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -151,7 +151,7 @@
                     android:orientation="horizontal" />
             </LinearLayout>
 
-            <com.vadim.iqosmap.view.PlaceHolderView
+            <com.vm.iqosmap.view.PlaceHolderView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="@+id/llData"

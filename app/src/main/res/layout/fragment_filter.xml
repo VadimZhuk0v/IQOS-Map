@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.vadim.iqosmap.ui.filter.FilterViewModel" />
+            type="com.vm.iqosmap.ui.filter.FilterViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView
