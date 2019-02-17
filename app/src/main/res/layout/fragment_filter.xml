@@ -45,8 +45,6 @@
 
                 <LinearLayout
                     android:id="@+id/llSticks"
-                    android:paddingTop="@dimen/margin"
-                    android:paddingBottom="@dimen/margin"
                     android:clipToPadding="false"
                     style="@style/FilterContainerStyle"
                     android:foreground="@drawable/ripple_sticks">

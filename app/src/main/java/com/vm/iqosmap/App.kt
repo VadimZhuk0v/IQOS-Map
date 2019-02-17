@@ -16,8 +16,6 @@ class App : Application() {
 
         initDagger()
         setUpCrashlytics()
-
-        Crashlytics.getInstance().crash() // Force a crash
     }
 
     private fun initDagger() {
