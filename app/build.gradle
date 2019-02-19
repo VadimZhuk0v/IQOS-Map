@@ -1,0 +1,60 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs'
+apply plugin: 'io.fabric'
+apply from: 'variables.gradle'
+
+android {
+
+    lintOptions {
+        checkReleaseBuilds false // Add this
+        abortOnError false
+    }
+
+    signingConfigs {
+        config {
+            keyAlias 'IqosMap'
+            keyPassword ',L5}4Ad2uwq=:!K;'
+            storeFile file('iqos-map-key.jks')
+            storePassword ',L5}4Ad2uwq=:!K;'
+        }
+    }
+
+    compileSdkVersion 28
+
+    defaultConfig {
+        applicationId "com.vadmax.iqosmap"
+        minSdkVersion 22
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.config
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            ext.enableCrashlytics = false
+        }
+    }
+
+    dataBinding {
+        enabled true
+    }
+
+}
+
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+apply from: 'dependencies.gradle'

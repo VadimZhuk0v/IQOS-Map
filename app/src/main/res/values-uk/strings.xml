@@ -1,0 +1,31 @@
+<resources>
+
+    <string name="filter_sticks_title">Стіки</string>
+    <string name="filter_sticks_descriptions">Точки продажу стіків</string>
+
+    <string name="filter_devices_title">Девайси</string>
+    <string name="filter_devices_descriptions">Місця де можна купити девайси IQOS</string>
+
+    <string name="filter_accessories_title">Аксесуари</string>
+    <string name="filter_accessories_descriptions">Кастомізація, зарядні пристрої</string>
+
+    <string name="filter_service_title">Сервіс</string>
+    <string name="filter_service_descriptions">Ремонт, обслуговування, заміна</string>
+
+    <string name="filter_friendly_title">Friendly</string>
+    <string name="filter_friendly_descriptions">Толерантні заклади</string>
+
+    <string name="cancel">Скасувати</string>
+    <string name="apply">Застосувати</string>
+
+    <string name="error_internet_connection">Відсутня інтернет з\'єднання</string>
+
+    <string name="repeat">Повторити</string>
+    <string name="address_format">Адреса: %s</string>
+    <string name="phone_format">Телефон: %s</string>
+    <string name="schedulers_format">Час роботи: %s</string>
+
+    <string name="attention">Увага</string>
+    <string name="new_version_is_available">Доступна нова версія</string>
+
+</resources>

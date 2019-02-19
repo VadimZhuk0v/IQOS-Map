@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#29b6f6</color>
+    <color name="colorPrimaryDark">#0086c3</color>
+    <color name="colorAccent">#29b6f6</color>
+
+    <color name="white">@android:color/white</color>
+    <color name="black">@android:color/black</color>
+    <color name="gray">@android:color/darker_gray</color>
+
+    <color name="holder">#f9f9f9</color>
+
+    <color name="text_color_primary">@color/black</color>
+    <color name="text_color_secondary">#1b1b1b</color>
+
+    <color name="category_sticks">#EC9F45</color>
+    <color name="category_devices">#EB6552</color>
+    <color name="category_accessories">#45B0F9</color>
+    <color name="category_service">#A469BC</color>
+    <color name="category_friendly">#23C5A8</color>
+    <color name="category_base">#1D8AD3</color>
+
+    <color name="category_base_top">#78DAB3</color>
+    <color name="category_base_bottom">#1A87D3</color>
+
+    <color name="green">#35a900</color>
+    <color name="red">#dc000b</color>
+</resources>
