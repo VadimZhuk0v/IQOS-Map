@@ -29,7 +29,7 @@ class CoroutinesHelper(private val context: Context, private var coroutineContex
         }
 
     fun launch(
-        onError: (e: Exception) -> Unit = ::defaultOnError,
+        onError: (e: Throwable) -> Unit = ::defaultOnError,
         block: suspend CoroutineScope.() -> Unit
     ): CoroutinesHelper {
         if (currentJob != null && currentJob!!.isCancelled.not()) {
@@ -42,7 +42,7 @@ class CoroutinesHelper(private val context: Context, private var coroutineContex
                     checkInternetConnection(context)
 
                 block()
-            } catch (e: Exception) {
+            } catch (e: Throwable) {
                 withContext(Dispatchers.Main) {
                     onError(e)
                 }
@@ -61,7 +61,7 @@ class CoroutinesHelper(private val context: Context, private var coroutineContex
         }
     }
 
-    private fun defaultOnError(e: Exception) {
+    private fun defaultOnError(e: Throwable) {
         if (BuildConfig.DEBUG)
             e.printStackTrace()
     }

@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name" translatable="false">Iqos Map</string>
+    <string name="app_name" translatable="false">IQOS Map</string>
     <string name="google_map_api_key" translatable="false">AIzaSyAhBFrYr_ljelfVIDW37WJOqsTpFYWpIuw</string>
 
     <string name="filter_sticks_title">Sticks</string>

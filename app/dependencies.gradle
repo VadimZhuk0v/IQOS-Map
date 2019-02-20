@@ -67,10 +67,6 @@ dependencies {
     implementation "com.google.firebase:firebase-core:$firebase_version"
     implementation 'com.google.firebase:firebase-config:16.3.0'
     implementation 'com.crashlytics.sdk.android:crashlytics:2.9.9'
-
-    implementation('com.crashlytics.sdk.android:crashlytics:2.9.9@aar') {
-        transitive = true
-    }
     //------------------------------------------------------------------------------------------------------------------
 
 }
