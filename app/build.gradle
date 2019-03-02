@@ -8,11 +8,6 @@ apply from: 'variables.gradle'
 
 android {
 
-    lintOptions {
-        checkReleaseBuilds false // Add this
-        abortOnError false
-    }
-
     signingConfigs {
         config {
             keyAlias 'IqosMap'
@@ -41,7 +36,7 @@ android {
         }
 
         debug {
-            ext.enableCrashlytics = false
+
         }
     }
 
