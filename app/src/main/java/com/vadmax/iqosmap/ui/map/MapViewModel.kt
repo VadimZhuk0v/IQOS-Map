@@ -8,13 +8,10 @@ import com.vadmax.iqosmap.data.container.PointQuery
 import com.vadmax.iqosmap.data.container.SortedPoints
 import com.vadmax.iqosmap.utils.MLD
 import com.vadmax.iqosmap.utils.coroutines.CoroutinesHelper
-import javax.inject.Inject
 
-open class MapViewModel(app: Application) : BaseViewModel(app) {
+open class MapViewModel(app: Application) : BaseViewModel<MapRepository>(app) {
 
-    @Inject protected lateinit var repository: MapRepository
-
-    private val pointsJob by lazy { CoroutinesHelper(getApplication()).setCancel(coroutinesRemove) }
+    private val chLoadPoints by lazy { CoroutinesHelper(getApplication()).setCancel(coroutinesRemove) }
 
     val ldPoints = MLD<SortedPoints>()
     val ldFilters = repository.ldSelectedCategories
@@ -24,16 +21,15 @@ open class MapViewModel(app: Application) : BaseViewModel(app) {
     fun loadPoints(center: LatLng, radius: Float) {
         showProgress()
 
-        val pointBody = PointQuery(
-            center.longitude.toFloat(),
-            center.latitude.toFloat(),
-            repository.selectedCategories,
-            radius.toInt()
-        )
+        chLoadPoints.cancel()
 
-        pointsJob.cancel()
-
-        pointsJob.launch(::onError) {
+        chLoadPoints.launch(::onError) {
+            val pointBody = PointQuery(
+                center.longitude.toFloat(),
+                center.latitude.toFloat(),
+                repository.selectedCategories,
+                radius.toInt()
+            )
             val points = SortedPoints(repository.getPoints(pointBody).await())
             ldPoints.postValue(points)
             hideProgress()

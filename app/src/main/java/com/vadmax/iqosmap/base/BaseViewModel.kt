@@ -3,6 +3,8 @@ package com.vadmax.iqosmap.base
 import android.app.Application
 import android.util.Log
 import android.widget.Toast
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
@@ -13,13 +15,16 @@ import com.vadmax.iqosmap.utils.MLD
 import com.vadmax.iqosmap.utils.coroutines.CoroutinesCancel
 import com.vadmax.iqosmap.utils.network.InternetUnreachableException
 import com.vadmax.iqosmap.view.PlaceHolderView
+import javax.inject.Inject
 
 @Suppress("ImplicitThis", "LeakingThis")
-abstract class BaseViewModel(app: Application) : AndroidViewModel(app), LifecycleObserver {
+abstract class BaseViewModel<RP : BaseRepository>(app: Application) : AndroidViewModel(app), LifecycleObserver {
 
     init {
         inject()
     }
+
+    @Inject protected lateinit var repository: RP
 
     protected val coroutinesRemove = CoroutinesCancel()
 
@@ -45,7 +50,12 @@ abstract class BaseViewModel(app: Application) : AndroidViewModel(app), Lifecycl
     }
 
     open fun showInternetConnectionError() {
-        showMessage(getApplication<Application>().getString(R.string.error_internet_connection))
+        val errorMessage = getString(R.string.error_internet_connection)
+
+        if (ldHolderState.value == PlaceHolderView.HolderState.Hide)
+            showMessage(errorMessage)
+        else
+            showErrorHolder(errorMessage)
     }
 
     open fun showMessage(message: String) {
@@ -69,5 +79,15 @@ abstract class BaseViewModel(app: Application) : AndroidViewModel(app), Lifecycl
     open fun viewOnResume() {
         Log.d("View's Lifecycle", "onResume")
     }
+
+    @Suppress("MemberVisibilityCanBePrivate")
+    fun showErrorHolder(message: String, @DrawableRes imageId: Int = 0, needRepeat: Boolean = false) {
+        ldHolderState.postValue(PlaceHolderView.HolderState.Error(message, imageId, needRepeat))
+    }
+
+    private fun getString(@StringRes strId: Int, vararg params: String) =
+        getApplication<Application>().getString(strId, params)
+
+    private fun getString(@StringRes strId: Int) = getApplication<Application>().getString(strId)
 
 }

@@ -1,6 +1,5 @@
 package com.vadmax.iqosmap.ui.map
 
-
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent

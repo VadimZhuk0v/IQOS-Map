@@ -1,7 +1,6 @@
 package com.vadmax.iqosmap.view
 
 import android.content.Context
-import android.os.Build
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +9,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.DrawableRes
-import androidx.annotation.RequiresApi
 import com.airbnb.lottie.LottieAnimationView
 import com.vadmax.iqosmap.R
 
@@ -25,6 +23,7 @@ class PlaceHolderView : FrameLayout {
 
     private var dataContainer: View? = null
 
+    @Suppress("MemberVisibilityCanBePrivate")
     var state: HolderState = HolderState.Hide
         private set(value) {
             field = value
@@ -51,21 +50,12 @@ class PlaceHolderView : FrameLayout {
         init()
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int, defStyleRes: Int) : super(
-        context,
-        attrs,
-        defStyleAttr,
-        defStyleRes
-    ) {
-        init()
-    }
-
     fun setDataContainer(dataContainer: View) {
         this.dataContainer = dataContainer
         init()
         when (state) {
-            is HolderState.Hide -> {}
+            is HolderState.Hide -> {
+            }
             is HolderState.Progress -> showProgress()
             is HolderState.Error -> showError(
                 (state as HolderState.Error).message,
@@ -113,6 +103,7 @@ class PlaceHolderView : FrameLayout {
         this.visibility = View.GONE
     }
 
+    @Suppress("unused")
     fun setOnRepeatClickListener(event: () -> Unit) {
         repeatEvent = event
     }
@@ -134,6 +125,7 @@ class PlaceHolderView : FrameLayout {
         state = HolderState.Error(error, imageId, repeatVisible)
     }
 
+    @Suppress("unused")
     fun hideError() {
         this.visibility = View.GONE
         dataContainer?.visibility = View.VISIBLE
