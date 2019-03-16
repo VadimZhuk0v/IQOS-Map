@@ -5,7 +5,6 @@ import com.vadmax.iqosmap.di.component.AppComponent
 import com.vadmax.iqosmap.di.component.DaggerAppComponent
 import com.vadmax.iqosmap.di.module.AppModule
 
-
 class App : Application() {
 
     override fun onCreate() {

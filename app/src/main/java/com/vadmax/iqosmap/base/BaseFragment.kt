@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.vadmax.iqosmap.utils.ViewModelFactory
 
-abstract class BaseFragment<VM : BaseViewModel, B : ViewDataBinding> : Fragment() {
+abstract class BaseFragment<VM : BaseViewModel<*>, B : ViewDataBinding> : Fragment() {
 
     protected val viewModel: VM by lazy { createViewModel() }
     protected lateinit var binding: B
@@ -30,6 +30,5 @@ abstract class BaseFragment<VM : BaseViewModel, B : ViewDataBinding> : Fragment(
 
     protected inline fun <reified VMP : VM> provideViewModel(noinline instance: (application: Application) -> VMP) =
         ViewModelProviders.of(this, ViewModelFactory(activity!!.application, instance)).get(VMP::class.java)
-
 
 }

@@ -5,11 +5,8 @@ import com.vadmax.iqosmap.App
 import com.vadmax.iqosmap.base.BaseViewModel
 import com.vadmax.iqosmap.utils.CategoryEnum
 import com.vadmax.iqosmap.utils.MLD
-import javax.inject.Inject
 
-class FilterViewModel(app: Application): BaseViewModel(app) {
-
-    @Inject lateinit var repository: FilterRepository
+class FilterViewModel(app: Application): BaseViewModel<FilterRepository>(app) {
 
     override fun inject() = App.appComponent.inject(this)
 

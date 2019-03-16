@@ -8,13 +8,9 @@ import com.vadmax.iqosmap.data.entities.PlaceEntity
 import com.vadmax.iqosmap.utils.MLD
 import com.vadmax.iqosmap.utils.coroutines.CoroutinesHelper
 import com.vadmax.iqosmap.view.PlaceHolderView
-import javax.inject.Inject
 
 
-class PlaceViewModel(app: Application, private val placeId: Long) : BaseViewModel(app) {
-
-    @Suppress("ProtectedInFinal")
-    @Inject protected lateinit var repository: PlaceRepository
+class PlaceViewModel(app: Application, private val placeId: Long) : BaseViewModel<PlaceRepository>(app) {
 
     override fun inject() = App.appComponent.inject(this)
 

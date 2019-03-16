@@ -12,7 +12,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.vadmax.iqosmap.utils.ViewModelFactory
 
 
-abstract class BaseBottomSheetDialog<VM : BaseViewModel, B : ViewDataBinding>: BottomSheetDialogFragment() {
+abstract class BaseBottomSheetDialog<VM : BaseViewModel<*>, B : ViewDataBinding>: BottomSheetDialogFragment() {
 
     protected val viewModel: VM by lazy { createViewModel() }
     protected lateinit var binding: B
@@ -31,8 +31,5 @@ abstract class BaseBottomSheetDialog<VM : BaseViewModel, B : ViewDataBinding>: B
 
     protected inline fun <reified VMP : VM> provideViewModel(noinline instance: (application: Application) -> VMP) =
         ViewModelProviders.of(this, ViewModelFactory(activity!!.application, instance)).get(VMP::class.java)
-
-
-
 
 }
