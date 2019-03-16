@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "352464747158",
-    "firebase_url": "https://iqos-map.firebaseio.com",
-    "project_id": "iqos-map",
-    "storage_bucket": "iqos-map.appspot.com"
+    "project_number": "848435220538",
+    "firebase_url": "https://vadmax.firebaseio.com",
+    "project_id": "vadmax",
+    "storage_bucket": "vadmax.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:352464747158:android:52af72d3ac74bb4e",
+        "mobilesdk_app_id": "1:848435220538:android:52af72d3ac74bb4e",
         "android_client_info": {
           "package_name": "com.vadmax.iqosmap"
         }
       },
       "oauth_client": [
         {
-          "client_id": "352464747158-4fu5l904qnmkalnv4f8nadbvvffvc0c4.apps.googleusercontent.com",
+          "client_id": "848435220538-225v3q8om8dr9kt09k985d76euflnm9t.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCeeKHcEWJYoI7Mpuvu1UaRZONfRfPywQ4"
+          "current_key": "AIzaSyDKhvkiOfAs3wMLaIma3Wj_gS26WaYRfsY"
         }
       ],
       "services": {
