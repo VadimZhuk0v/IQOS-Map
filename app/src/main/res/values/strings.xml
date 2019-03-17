@@ -1,7 +1,7 @@
 <resources>
 
     <string name="app_name" translatable="false">IQOS Map</string>
-    <string name="google_map_api_key" translatable="false">AIzaSyAhBFrYr_ljelfVIDW37WJOqsTpFYWpIuw</string>
+    <string name="google_map_api_key" translatable="false">AIzaSyDikFCYqUmaRV7A7fr1zjuf_jNiDWxsdeQ</string>
 
     <string name="filter_sticks_title">Sticks</string>
     <string name="filter_sticks_descriptions">Point selling sticks</string>
