@@ -15,7 +15,3 @@
 /.idea/
 .idea/icon.png
 .idea/icon_dark.png
-app/libs/
-app/src/main/assets/progress/
-app/src/main/res/anim/
-app/src/main/res/mipmap-anydpi-v26/
