@@ -30,7 +30,7 @@ class MapViewModel(app: Application) : BaseViewModel<MapRepository>(app) {
                 repository.selectedCategories,
                 radius.toInt()
             )
-            val points = SortedPoints(repository.getPoints(pointBody).await())
+            val points = SortedPoints(repository.getPoints(pointBody))
             ldPoints.postValue(points)
             hideProgress()
         }

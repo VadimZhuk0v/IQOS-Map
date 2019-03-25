@@ -25,7 +25,7 @@ class PlaceViewModel(app: Application, private val placeId: Long) : BaseViewMode
         showProgress()
 
         CoroutinesHelper(getApplication()).setCancel(coroutinesRemove).launch(::onError) {
-            val placeEntity = repository.getPlace(placeId).await()
+            val placeEntity = repository.getPlace(placeId)
             ldPlace.postValue(placeEntity)
             hideProgress()
         }

@@ -28,7 +28,7 @@ import com.vadmax.iqosmap.databinding.FragmentMapBinding
 import com.vadmax.iqosmap.ui.filter.FilterFragment
 import com.vadmax.iqosmap.ui.filter.IFilterCallBack
 import com.vadmax.iqosmap.ui.place.PlaceBottomSheetDialog
-import com.vadmax.iqosmap.utils.extentions.addFinishListner
+import com.vadmax.iqosmap.utils.extentions.addFinishListener
 import com.vadmax.iqosmap.utils.extentions.radius
 import com.vadmax.iqosmap.utils.extentions.toLatLng
 import com.vadmax.iqosmap.utils.marker.FilteredClusterManager
@@ -141,7 +141,7 @@ class MapFragment : BaseFragment<MapViewModel, FragmentMapBinding>(), OnMapReady
         ConstraintSetUtils.centerView(R.id.fabFilter, cs)
 
         val transition = ChangeBounds()
-        transition.addFinishListner {
+        transition.addFinishListener {
             binding.flFilter.visibility = View.VISIBLE
 
             val filterFragment = FilterFragment.newInstance()

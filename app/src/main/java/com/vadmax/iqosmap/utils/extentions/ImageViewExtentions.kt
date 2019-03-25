@@ -9,27 +9,27 @@ import android.widget.ImageView
 import androidx.annotation.DrawableRes
 
 
-fun ImageView.cheangeImageAnimated(newImage: Bitmap) {
-    val anim_out = AnimationUtils.loadAnimation(context, android.R.anim.fade_out)
-    val anim_in = AnimationUtils.loadAnimation(context, android.R.anim.fade_in)
-    anim_out.setAnimationListener(object : AnimationListener {
+fun ImageView.changeImageAnimated(newImage: Bitmap) {
+    val animOut = AnimationUtils.loadAnimation(context, android.R.anim.fade_out)
+    val animIn = AnimationUtils.loadAnimation(context, android.R.anim.fade_in)
+    animOut.setAnimationListener(object : AnimationListener {
         override fun onAnimationStart(animation: Animation) {}
         override fun onAnimationRepeat(animation: Animation) {}
         override fun onAnimationEnd(animation: Animation) {
-            this@cheangeImageAnimated.setImageBitmap(newImage)
-            anim_in.setAnimationListener(object : AnimationListener {
+            this@changeImageAnimated.setImageBitmap(newImage)
+            animIn.setAnimationListener(object : AnimationListener {
                 override fun onAnimationStart(animation: Animation) {}
                 override fun onAnimationRepeat(animation: Animation) {}
                 override fun onAnimationEnd(animation: Animation) {}
             })
-            this@cheangeImageAnimated.startAnimation(anim_in)
+            this@changeImageAnimated.startAnimation(animIn)
         }
     })
-    this@cheangeImageAnimated.startAnimation(anim_out)
+    this@changeImageAnimated.startAnimation(animOut)
 }
 
-fun ImageView.cheangeImageAnimated(@DrawableRes newImage: Int, withAnimation: Boolean) =
+fun ImageView.changeImageAnimated(@DrawableRes newImage: Int, withAnimation: Boolean) =
     if (withAnimation)
-        cheangeImageAnimated(BitmapFactory.decodeResource(context.resources, newImage))
+        changeImageAnimated(BitmapFactory.decodeResource(context.resources, newImage))
     else
         setImageResource(newImage)

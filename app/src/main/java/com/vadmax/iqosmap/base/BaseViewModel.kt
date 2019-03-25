@@ -18,8 +18,8 @@ import com.vadmax.iqosmap.view.PlaceHolderView
 import org.koin.core.KoinComponent
 
 @Suppress("ImplicitThis", "LeakingThis")
-abstract class BaseViewModel<RP : BaseRepository>(app: Application) : AndroidViewModel(app), LifecycleObserver,
-                                                                      KoinComponent {
+abstract class BaseViewModel<RP : BaseRepository>(app: Application)
+    : AndroidViewModel(app), LifecycleObserver, KoinComponent {
 
     protected abstract val repository: RP
 

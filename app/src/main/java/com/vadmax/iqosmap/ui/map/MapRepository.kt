@@ -5,7 +5,7 @@ import com.vadmax.iqosmap.data.container.PointQuery
 
 class MapRepository : BaseRepository() {
 
-    fun getPoints(pointQuery: PointQuery) = dataManager.apiHelper.loadPoints(pointQuery)
+    suspend fun getPoints(pointQuery: PointQuery) = dataManager.apiHelper.loadPoints(pointQuery).await()
 
     val ldSelectedCategories = dataManager.sharedHelper.enabledFiltersLiveData
 

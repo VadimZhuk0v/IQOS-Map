@@ -12,7 +12,7 @@ import com.vadmax.iqosmap.R
 import com.vadmax.iqosmap.base.BaseFragment
 import com.vadmax.iqosmap.databinding.FragmentFilterBinding
 import com.vadmax.iqosmap.utils.CategoryEnum
-import com.vadmax.iqosmap.utils.extentions.cheangeImageAnimated
+import com.vadmax.iqosmap.utils.extentions.changeImageAnimated
 import com.vadmax.iqosmap.utils.ui.UiUtils
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -61,9 +61,9 @@ class FilterFragment : BaseFragment<FilterViewModel, FragmentFilterBinding>() {
         withAnimation: Boolean = false
     ) {
         if (enabledCategory.contains(categoryEnum)) {
-            imageView.cheangeImageAnimated(categoryEnum.icon, withAnimation)
+            imageView.changeImageAnimated(categoryEnum.icon, withAnimation)
         } else {
-            imageView.cheangeImageAnimated(categoryEnum.iconPale, withAnimation)
+            imageView.changeImageAnimated(categoryEnum.iconPale, withAnimation)
         }
     }
 
