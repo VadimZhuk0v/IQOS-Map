@@ -1,14 +1,14 @@
 package com.vadmax.iqosmap.ui.filter
 
 import android.app.Application
-import com.vadmax.iqosmap.App
 import com.vadmax.iqosmap.base.BaseViewModel
 import com.vadmax.iqosmap.utils.CategoryEnum
 import com.vadmax.iqosmap.utils.MLD
+import org.koin.core.inject
 
 class FilterViewModel(app: Application): BaseViewModel<FilterRepository>(app) {
 
-    override fun inject() = App.appComponent.inject(this)
+    override val repository: FilterRepository by inject()
 
     val ldCategories = MLD<MutableSet<CategoryEnum>>()
 

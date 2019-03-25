@@ -1,18 +1,17 @@
 package com.vadmax.iqosmap.ui.place
 
 import android.app.Application
-import com.vadmax.iqosmap.App
 import com.vadmax.iqosmap.R
 import com.vadmax.iqosmap.base.BaseViewModel
 import com.vadmax.iqosmap.data.entities.PlaceEntity
 import com.vadmax.iqosmap.utils.MLD
 import com.vadmax.iqosmap.utils.coroutines.CoroutinesHelper
 import com.vadmax.iqosmap.view.PlaceHolderView
-
+import org.koin.core.inject
 
 class PlaceViewModel(app: Application, private val placeId: Long) : BaseViewModel<PlaceRepository>(app) {
 
-    override fun inject() = App.appComponent.inject(this)
+    override val repository: PlaceRepository by inject()
 
     val ldClose = MLD<Boolean>()
     val ldPlace = MLD<PlaceEntity>()
