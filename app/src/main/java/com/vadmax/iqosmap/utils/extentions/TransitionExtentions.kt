@@ -2,7 +2,7 @@ package com.vadmax.iqosmap.utils.extentions
 
 import androidx.transition.Transition
 
-fun Transition.addFinishListner(event: () -> Unit){
+fun Transition.addFinishListener(event: () -> Unit){
     this.addListener(object : Transition.TransitionListener {
         override fun onTransitionEnd(transition: Transition) {
             event()

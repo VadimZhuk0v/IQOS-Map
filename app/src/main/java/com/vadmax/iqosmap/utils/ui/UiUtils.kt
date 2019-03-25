@@ -18,44 +18,6 @@ private const val REVEAL_DURATION = 300L
 
 object UiUtils {
 
-
-    fun showFragmentWithReveal(frameLayout: FrameLayout) {
-        frameLayout.visibility = View.GONE
-        val x = frameLayout.width / 2
-        val y = frameLayout.height / 2
-
-        val startRadius = 0
-        val endRadius = Math.hypot(frameLayout.width.toDouble(), frameLayout.height.toDouble()).toInt()
-
-        val anim =
-            ViewAnimationUtils.createCircularReveal(frameLayout, x, y, startRadius.toFloat(), endRadius.toFloat())
-
-        anim.duration = REVEAL_DURATION
-        frameLayout.visibility = View.VISIBLE
-        anim.start()
-    }
-
-    fun hideViewWithReveal(view: View, onFinishEvent: () -> Unit) {
-        val cx = view.width / 2
-        val cy = view.height / 2
-
-        val initialRadius = Math.hypot(cx.toDouble(), cy.toDouble()).toFloat()
-
-        val anim = ViewAnimationUtils.createCircularReveal(view, cx, cy, initialRadius, 0f)
-
-        anim.addListener(object : AnimatorListenerAdapter() {
-
-            override fun onAnimationEnd(animation: Animator) {
-                super.onAnimationEnd(animation)
-                onFinishEvent()
-            }
-        })
-
-        anim.duration = REVEAL_DURATION
-
-        anim.start()
-    }
-
     fun hideFragmentWithReveal(
         fragmentManager: FragmentManager?,
         frameLayout: FrameLayout,

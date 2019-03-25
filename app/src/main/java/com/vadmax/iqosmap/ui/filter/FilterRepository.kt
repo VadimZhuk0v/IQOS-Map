@@ -1,14 +1,12 @@
 package com.vadmax.iqosmap.ui.filter
 
 import com.vadmax.iqosmap.base.BaseRepository
-import com.vadmax.iqosmap.data.DataManager
 import com.vadmax.iqosmap.utils.CategoryEnum
-import javax.inject.Inject
 
-class FilterRepository @Inject constructor(dataManager: DataManager): BaseRepository(dataManager) {
+class FilterRepository : BaseRepository() {
 
     var enabledFilters: MutableSet<CategoryEnum>
-        get()  {
+        get() {
             val setCategories = mutableSetOf<CategoryEnum>()
             dataManager.sharedHelper.enabledFilters.forEach {
                 setCategories.add(CategoryEnum.instanceById(it))

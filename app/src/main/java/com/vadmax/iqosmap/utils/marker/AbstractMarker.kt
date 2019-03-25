@@ -5,8 +5,8 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.maps.android.clustering.ClusterItem
 
 abstract class AbstractMarker(
-    protected var latitude: Float,
-    protected var longitude: Float
+    private var latitude: Float,
+    private var longitude: Float
 ) : ClusterItem {
 
     override fun getPosition() = LatLng(latitude.toDouble(), longitude.toDouble())

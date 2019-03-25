@@ -12,3 +12,6 @@
 /.idea/misc.xml
 /.idea/dictionaries/
 /app/release/
+/.idea/
+.idea/icon.png
+.idea/icon_dark.png

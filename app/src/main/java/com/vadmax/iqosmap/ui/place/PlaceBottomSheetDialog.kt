@@ -15,6 +15,8 @@ import com.vadmax.iqosmap.R
 import com.vadmax.iqosmap.base.BaseBottomSheetDialog
 import com.vadmax.iqosmap.databinding.BottomSheetDialogPlaceBinding
 import com.vadmax.iqosmap.utils.CategoryEnum
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 import java.util.Locale
 
 
@@ -34,17 +36,15 @@ class PlaceBottomSheetDialog : BaseBottomSheetDialog<PlaceViewModel, BottomSheet
 
     override val layoutId = DIALOG_LAYOUT_ID
 
+    override val viewModel: PlaceViewModel by viewModel{ parametersOf(placeId)}
+
     private val placeId by lazy { arguments!!.getLong(ARG_PLACE_ID) }
 
-    override fun createViewModel() = provideViewModel { PlaceViewModel(it, placeId) }
-
-    override fun setDataToBinding() {
-        binding.viewModel = viewModel
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.viewModel = viewModel
         observeClose()
         observePlace()
     }
@@ -57,11 +57,7 @@ class PlaceBottomSheetDialog : BaseBottomSheetDialog<PlaceViewModel, BottomSheet
         }
         binding.ivGoogleMap.setOnClickListener {
             val q = "${latLng.latitude.toFloat()},${latLng.longitude.toFloat()}($address)"
-            val uri = String.format(
-                Locale.ROOT,
-                "geo:0,0?q=%s",
-                q
-            )
+            val uri = String.format(Locale.ROOT, "geo:0,0?q=%s", q)
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
             startActivity(intent)
         }

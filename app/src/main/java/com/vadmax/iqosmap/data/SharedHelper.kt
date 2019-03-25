@@ -63,10 +63,8 @@ class SharedHelper(context: Context) {
         }
 
     var enabledFilters: MutableSet<Int>
-        get() = sharedPreferences.getStringSet(
-            ENABLED_FILTERS,
-            setOf("1", "2", "3", "4", "5")
-        )!!.map { it.toInt() }.toMutableSet()
+        get() = sharedPreferences.getStringSet(ENABLED_FILTERS, setOf("1", "2", "3", "4", "5"))!!
+            .map { it.toInt() }.toMutableSet()
         set(value) = sharedPreferences.putStringSet(ENABLED_FILTERS, value.map { it.toString() }.toSet())
 
     val enabledFiltersLiveData: LiveData<Set<Int>>

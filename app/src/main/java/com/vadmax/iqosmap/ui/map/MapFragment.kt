@@ -28,7 +28,7 @@ import com.vadmax.iqosmap.databinding.FragmentMapBinding
 import com.vadmax.iqosmap.ui.filter.FilterFragment
 import com.vadmax.iqosmap.ui.filter.IFilterCallBack
 import com.vadmax.iqosmap.ui.place.PlaceBottomSheetDialog
-import com.vadmax.iqosmap.utils.extentions.addFinishListner
+import com.vadmax.iqosmap.utils.extentions.addFinishListener
 import com.vadmax.iqosmap.utils.extentions.radius
 import com.vadmax.iqosmap.utils.extentions.toLatLng
 import com.vadmax.iqosmap.utils.marker.FilteredClusterManager
@@ -36,6 +36,7 @@ import com.vadmax.iqosmap.utils.marker.MarkerIqos
 import com.vadmax.iqosmap.utils.marker.OwnIconRender
 import com.vadmax.iqosmap.utils.ui.ConstraintSetUtils
 import com.vadmax.iqosmap.utils.ui.UiUtils
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 private const val FRAGMENT_LAYOUT_ID = R.layout.fragment_map
 private const val REQUEST_CHECK_SETTINGS = 1111
@@ -45,6 +46,8 @@ private const val MARKER_ZOOM = 16.0f
 class MapFragment : BaseFragment<MapViewModel, FragmentMapBinding>(), OnMapReadyCallback, IFilterCallBack {
 
     override val layoutId = FRAGMENT_LAYOUT_ID
+
+    override val viewModel: MapViewModel by viewModel()
 
     private lateinit var cmSticks: FilteredClusterManager
     private lateinit var cmDevices: FilteredClusterManager
@@ -65,12 +68,6 @@ class MapFragment : BaseFragment<MapViewModel, FragmentMapBinding>(), OnMapReady
 
     }
 
-    override fun createViewModel() = provideViewModel { MapViewModel(it) }
-
-    override fun setDataToBinding() {
-        binding.viewModel = viewModel
-    }
-
     override fun onLowMemory() {
         super.onLowMemory()
 
@@ -80,6 +77,7 @@ class MapFragment : BaseFragment<MapViewModel, FragmentMapBinding>(), OnMapReady
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.viewModel = viewModel
         lifecycle.addObserver(MapLifecycleObserver(binding.map, fusedLocationClient, locationCallback))
         initMap(savedInstanceState)
     }
@@ -143,7 +141,7 @@ class MapFragment : BaseFragment<MapViewModel, FragmentMapBinding>(), OnMapReady
         ConstraintSetUtils.centerView(R.id.fabFilter, cs)
 
         val transition = ChangeBounds()
-        transition.addFinishListner {
+        transition.addFinishListener {
             binding.flFilter.visibility = View.VISIBLE
 
             val filterFragment = FilterFragment.newInstance()

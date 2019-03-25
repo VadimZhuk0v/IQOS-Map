@@ -12,8 +12,9 @@ import com.vadmax.iqosmap.R
 import com.vadmax.iqosmap.base.BaseFragment
 import com.vadmax.iqosmap.databinding.FragmentFilterBinding
 import com.vadmax.iqosmap.utils.CategoryEnum
-import com.vadmax.iqosmap.utils.extentions.cheangeImageAnimated
+import com.vadmax.iqosmap.utils.extentions.changeImageAnimated
 import com.vadmax.iqosmap.utils.ui.UiUtils
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 private const val FRAGMENT_LAYOUT_ID = R.layout.fragment_filter
 
@@ -26,14 +27,11 @@ class FilterFragment : BaseFragment<FilterViewModel, FragmentFilterBinding>() {
 
     override val layoutId = FRAGMENT_LAYOUT_ID
 
-    override fun createViewModel() = provideViewModel { FilterViewModel(it) }
-
-    override fun setDataToBinding() {
-        binding.viewModel = viewModel
-    }
+    override val viewModel: FilterViewModel by viewModel()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
+        binding.viewModel = viewModel
         val colorTransparent = ContextCompat.getColor(view!!.context, android.R.color.transparent)
         UiUtils.registerCircularRevealAnimation(view.context, view, colorTransparent, colorTransparent)
         return view
@@ -63,9 +61,9 @@ class FilterFragment : BaseFragment<FilterViewModel, FragmentFilterBinding>() {
         withAnimation: Boolean = false
     ) {
         if (enabledCategory.contains(categoryEnum)) {
-            imageView.cheangeImageAnimated(categoryEnum.icon, withAnimation)
+            imageView.changeImageAnimated(categoryEnum.icon, withAnimation)
         } else {
-            imageView.cheangeImageAnimated(categoryEnum.iconPale, withAnimation)
+            imageView.changeImageAnimated(categoryEnum.iconPale, withAnimation)
         }
     }
 

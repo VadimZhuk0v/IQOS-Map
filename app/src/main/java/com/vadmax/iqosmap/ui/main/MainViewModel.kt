@@ -2,22 +2,22 @@ package com.vadmax.iqosmap.ui.main
 
 import android.app.Application
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
-import com.vadmax.iqosmap.App
 import com.vadmax.iqosmap.BuildConfig
 import com.vadmax.iqosmap.base.BaseViewModel
 import com.vadmax.iqosmap.utils.MLD
+import org.koin.core.inject
 
 private const val REM_CONF_SERVER_VERSION = "CURRENT_VERSION"
 
 class MainViewModel(app: Application) : BaseViewModel<MainRepository>(app) {
+
+    override val repository: MainRepository by inject()
 
     init {
         checkForUpdate()
     }
 
     val ldServerVersion = MLD<Int>()
-
-    override fun inject() = App.appComponent.inject(this)
 
     private fun checkForUpdate() {
         val configs = FirebaseRemoteConfig.getInstance()

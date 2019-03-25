@@ -1,13 +1,11 @@
 package com.vadmax.iqosmap.ui.map
 
 import com.vadmax.iqosmap.base.BaseRepository
-import com.vadmax.iqosmap.data.DataManager
 import com.vadmax.iqosmap.data.container.PointQuery
-import javax.inject.Inject
 
-class MapRepository @Inject constructor(dataManager: DataManager) : BaseRepository(dataManager) {
+class MapRepository : BaseRepository() {
 
-    fun getPoints(pointQuery: PointQuery) = dataManager.apiHelper.loadPoints(pointQuery)
+    suspend fun getPoints(pointQuery: PointQuery) = dataManager.apiHelper.loadPoints(pointQuery).await()
 
     val ldSelectedCategories = dataManager.sharedHelper.enabledFiltersLiveData
 
