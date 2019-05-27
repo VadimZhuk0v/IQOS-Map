@@ -7,14 +7,15 @@ allprojects {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0-alpha03'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
-    implementation "androidx.lifecycle:lifecycle-extensions:2.1.0-alpha03"
-    implementation "androidx.lifecycle:lifecycle-viewmodel:2.1.0-alpha03"
+    implementation 'androidx.appcompat:appcompat:1.1.0-alpha05'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta1'
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0-alpha01"
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.2.0-alpha01"
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0-alpha01'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.android.gms:play-services-maps:16.1.0'
     implementation 'com.google.maps.android:android-maps-utils:0.5'
-    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.google.android.material:material:1.1.0-alpha06'
     implementation 'com.google.android.gms:play-services-location:16.0.0'
 
     testImplementation 'junit:junit:4.12'
@@ -47,7 +48,7 @@ dependencies {
 
     //Glide-------------------------------------------------------------------------------------------------------------
     implementation 'com.github.bumptech.glide:glide:4.8.0'
-    kapt 'com.github.bumptech.glide:compiler:4.8.0'
+    kapt 'com.github.bumptech.glide:compiler:4.9.0'
     //------------------------------------------------------------------------------------------------------------------
 
     //Lottie------------------------------------------------------------------------------------------------------------
@@ -55,18 +56,29 @@ dependencies {
     //------------------------------------------------------------------------------------------------------------------
 
     //Kotlin Coroutines-------------------------------------------------------------------------------------------------
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1'
     //------------------------------------------------------------------------------------------------------------------
 
     //Firebase----------------------------------------------------------------------------------------------------------
     implementation "com.google.firebase:firebase-core:$firebase_version"
-    implementation 'com.google.firebase:firebase-config:16.4.1'
-    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.9'
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
     //------------------------------------------------------------------------------------------------------------------
 
     //Koin--------------------------------------------------------------------------------------------------------------
     implementation "org.koin:koin-androidx-scope:$koin_version"
     implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    //------------------------------------------------------------------------------------------------------------------
+
+    //Timber------------------------------------------------------------------------------------------------------------
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+    //------------------------------------------------------------------------------------------------------------------
+
+    //Animations--------------------------------------------------------------------------------------------------------
+    implementation 'com.android.support:support-dynamic-animation:28.0.0'
+    //------------------------------------------------------------------------------------------------------------------
+
+    //KTX---------------------------------------------------------------------------------------------------------------
+    implementation 'androidx.core:core-ktx:1.0.2'
     //------------------------------------------------------------------------------------------------------------------
 }
 
