@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
     tools:ignore="ContentDescription">
 
     <data>
@@ -158,8 +159,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/llData"
-                app:dataContainer="@{llData}"
-                app:state="@{viewModel.ldHolderState}"
+                bind:dataContainer="@{llData}"
+                bind:state="@{viewModel.ldHolderState}"
                 tools:visibility="gone" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
