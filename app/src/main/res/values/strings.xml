@@ -31,4 +31,7 @@
     <string name="attention">Attention</string>
     <string name="new_version_is_available">A new version is available</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

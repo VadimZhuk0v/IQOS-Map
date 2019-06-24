@@ -9,7 +9,7 @@ import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import com.vadmax.iqosmap.R
-import com.vadmax.iqosmap.base.BaseFragment
+import com.vadmax.iqosmap.base.BaseDialogFragment
 import com.vadmax.iqosmap.databinding.FragmentFilterBinding
 import com.vadmax.iqosmap.utils.CategoryEnum
 import com.vadmax.iqosmap.utils.extentions.changeImageAnimated
@@ -18,7 +18,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 private const val FRAGMENT_LAYOUT_ID = R.layout.fragment_filter
 
-class FilterFragment : BaseFragment<FilterViewModel, FragmentFilterBinding>() {
+class FilterFragment : BaseDialogFragment<FilterViewModel, FragmentFilterBinding>() {
 
     companion object {
         const val TAG = "FilterFragment"

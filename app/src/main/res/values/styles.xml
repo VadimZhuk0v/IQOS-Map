@@ -102,7 +102,11 @@
         <item name="android:paddingEnd">@dimen/double_margin</item>
         <item name="android:orientation">vertical</item>
         <item name="android:minHeight">@dimen/filter_item_height</item>
+    </style>
 
+    <style name="AppTheme.Dialog">
+        <item name="android:windowEnterAnimation">@anim/dialog_show</item>
+        <item name="android:windowExitAnimation">@anim/dialog_hide</item>
     </style>
 
 </resources>

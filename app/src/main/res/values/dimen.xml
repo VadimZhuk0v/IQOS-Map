@@ -18,4 +18,8 @@
     <dimen name="layout_placeholder_view_tv_error_horizontal_margin">25dp</dimen>
     <dimen name="layout_placeholder_view_tv_error_text_size">16sp</dimen>
 
+    <dimen name="fab_main_size">56dp</dimen>
+    <dimen name="fab_cradle_margin">12dp</dimen>
+    <dimen name="fab_cradle_rounded_corner_radius">16dp</dimen>
+
 </resources>

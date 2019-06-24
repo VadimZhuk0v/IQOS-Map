@@ -4,13 +4,9 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.IntentSender
-import android.net.Uri
 import android.os.Bundle
 import android.view.View
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.lifecycle.Observer
-import androidx.transition.ChangeBounds
-import androidx.transition.TransitionManager
 import com.github.florent37.runtimepermission.RuntimePermission
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.LocationCallback
@@ -21,21 +17,15 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.maps.android.clustering.ClusterManager
-import com.vadmax.iqosmap.BuildConfig
 import com.vadmax.iqosmap.R
 import com.vadmax.iqosmap.base.BaseFragment
 import com.vadmax.iqosmap.databinding.FragmentMapBinding
-import com.vadmax.iqosmap.ui.filter.FilterFragment
-import com.vadmax.iqosmap.ui.filter.IFilterCallBack
 import com.vadmax.iqosmap.ui.place.PlaceBottomSheetDialog
-import com.vadmax.iqosmap.utils.extentions.addFinishListener
 import com.vadmax.iqosmap.utils.extentions.radius
 import com.vadmax.iqosmap.utils.extentions.toLatLng
 import com.vadmax.iqosmap.utils.marker.FilteredClusterManager
 import com.vadmax.iqosmap.utils.marker.MarkerIqos
 import com.vadmax.iqosmap.utils.marker.OwnIconRender
-import com.vadmax.iqosmap.utils.ui.ConstraintSetUtils
-import com.vadmax.iqosmap.utils.ui.UiUtils
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 private const val FRAGMENT_LAYOUT_ID = R.layout.fragment_map
@@ -43,7 +33,7 @@ private const val REQUEST_CHECK_SETTINGS = 1111
 private const val MARKER_ZOOM = 16.0f
 
 @SuppressLint("RestrictedApi")
-class MapFragment : BaseFragment<MapViewModel, FragmentMapBinding>(), OnMapReadyCallback, IFilterCallBack {
+class MapFragment : BaseFragment<MapViewModel, FragmentMapBinding>(), OnMapReadyCallback {
 
     override val layoutId = FRAGMENT_LAYOUT_ID
 
@@ -85,7 +75,6 @@ class MapFragment : BaseFragment<MapViewModel, FragmentMapBinding>(), OnMapReady
     override fun onMapReady(map: GoogleMap) {
         this.googleMap = map
 
-        setListeners()
         initClusterManagers()
         enableLocation()
         serClustersRender()
@@ -105,74 +94,12 @@ class MapFragment : BaseFragment<MapViewModel, FragmentMapBinding>(), OnMapReady
         observeFilters()
     }
 
-    private fun setListeners() {
-        binding.fabFilter.setOnClickListener {
-            val fragment = fragmentManager?.findFragmentByTag(FilterFragment.TAG)
-            if (fragment == null)
-                showFilterFragment()
-            else
-                hideFilterFragment()
-        }
-
-        binding.fabPhone.setOnClickListener {
-            val intent = Intent(Intent.ACTION_DIAL)
-            intent.data = Uri.parse("tel:${BuildConfig.IQOS_PHONE}")
-            startActivity(intent)
-        }
-
-        binding.fabWeb.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.data = Uri.parse(BuildConfig.IQOS_SITE)
-            startActivity(intent)
-        }
-    }
-
     private fun observeFilters() {
         viewModel.ldFilters.observe(this, Observer {
             googleMap?.let { map ->
                 viewModel.loadPoints(map.cameraPosition.target, map.radius)
             }
         })
-    }
-
-    private fun showFilterFragment() {
-        val cs = ConstraintSet().apply { clone(binding.clRoot) }
-
-        ConstraintSetUtils.centerView(R.id.fabFilter, cs)
-
-        val transition = ChangeBounds()
-        transition.addFinishListener {
-            binding.flFilter.visibility = View.VISIBLE
-
-            val filterFragment = FilterFragment.newInstance()
-
-            childFragmentManager.beginTransaction()
-                .add(R.id.flFilter, filterFragment, FilterFragment.TAG)
-                .commit()
-
-            binding.fabFilter.visibility = View.GONE
-        }
-
-        TransitionManager.beginDelayedTransition(binding.clRoot, transition)
-
-        cs.applyTo(binding.clRoot)
-    }
-
-    override fun hideFilterFragment() {
-        val onFinishEvent = {
-            binding.fabFilter.visibility = View.VISIBLE
-
-            val margin = resources.getDimensionPixelOffset(R.dimen.double_margin)
-            val cs = ConstraintSet().apply { clone(binding.clRoot) }
-
-            ConstraintSetUtils.bottomLeftView(R.id.fabFilter, cs, margin, margin)
-
-            TransitionManager.beginDelayedTransition(binding.clRoot)
-
-            cs.applyTo(binding.clRoot)
-        }
-
-        UiUtils.hideFragmentWithReveal(childFragmentManager, binding.flFilter, FilterFragment.TAG, onFinishEvent)
     }
 
     private fun observePoints() {
