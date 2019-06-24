@@ -1,25 +1,30 @@
 package com.vadmax.iqosmap.utils.live_data
 
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 
-class SingleLiveData<T> {
+class SingleLiveData<T> : LiveData<T>() {
 
-    private val liveData =   MutableLiveData<Event<T>>()
+    private val liveData = MutableLiveData<Event<T>>()
 
-    val value: T?
-    get() = liveData.value?.peekContent()
+    override fun getValue(): T? {
+        return liveData.value?.peekContent()
+    }
 
-    fun postValue(value: T) {
+    override fun setValue(value: T) {
+        liveData.value = Event(value)
+    }
+
+    public override fun postValue(value: T) {
         liveData.postValue(Event(value))
     }
 
-    fun observe(owner: LifecycleOwner, observer: EventObserver<T>){
-        liveData.observe(owner, observer)
+    override fun observe(owner: LifecycleOwner, observer: Observer<in T>) {
+        liveData.observe(owner, EventObserver { observer.onChanged(it) })
     }
 
-    fun observe(owner: LifecycleOwner, observer:(value: T)-> Unit) {
-        liveData.observe(owner, EventObserver { observer(it) })
-    }
+    fun observe(owner: LifecycleOwner, event:(value: T)-> Unit) = observe(owner, Observer { event(it) })
 
 }
