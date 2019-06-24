@@ -9,31 +9,42 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.viewModelScope
 import com.vadmax.iqosmap.BuildConfig
 import com.vadmax.iqosmap.R
 import com.vadmax.iqosmap.utils.MLD
-import com.vadmax.iqosmap.utils.coroutines.CoroutinesCancel
+import com.vadmax.iqosmap.utils.coroutines.CoroutinesHelper
 import com.vadmax.iqosmap.utils.network.InternetUnreachableException
 import com.vadmax.iqosmap.view.PlaceHolderView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import org.koin.core.KoinComponent
+import kotlin.coroutines.CoroutineContext
 
 @Suppress("ImplicitThis", "LeakingThis")
-abstract class BaseViewModel<RP : BaseRepository>(app: Application)
-    : AndroidViewModel(app), LifecycleObserver, KoinComponent {
+abstract class BaseViewModel<RP : BaseRepository>(app: Application) : AndroidViewModel(app), LifecycleObserver,
+                                                                      KoinComponent {
 
     protected abstract val repository: RP
 
-    protected val coroutinesRemove = CoroutinesCancel()
+
+    val coroutinesHelper get() = CoroutinesHelper(getApplication(), viewModelScope)
 
     open val ldProgress = MLD<Boolean>().apply { value = false }
     open val ldHolderState = MLD<PlaceHolderView.HolderState>().apply { value = PlaceHolderView.HolderState.Progress }
 
 
-    override fun onCleared() {
-        coroutinesRemove.clear()
-
-        super.onCleared()
-    }
+    fun launch(
+        onError: (e: Throwable) -> Unit = ::onError,
+        checkInternetConnection: Boolean = true,
+        coroutineContext: CoroutineContext = Dispatchers.IO,
+        block: suspend CoroutineScope.() -> Unit
+    ) = coroutinesHelper.launch(
+        onError,
+        checkInternetConnection,
+        coroutineContext,
+        block
+    )
 
     open fun onError(throwable: Throwable) {
         if (BuildConfig.DEBUG)
