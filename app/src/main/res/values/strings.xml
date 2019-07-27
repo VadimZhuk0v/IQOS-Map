@@ -2,6 +2,9 @@
 
     <string name="app_name" translatable="false">IQOS Map</string>
     <string name="google_map_api_key" translatable="false">AIzaSyDikFCYqUmaRV7A7fr1zjuf_jNiDWxsdeQ</string>
+    <string name="google_ads_id" translatable="false">ca-app-pub-2137393606695859~3978245676</string>
+    <string name="google_ads_banner_id" translatable="false">ca-app-pub-2137393606695859/6412837326</string>
+    <string name="google_ads_banner_test_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
 
     <string name="filter_sticks_title">Sticks</string>
     <string name="filter_sticks_descriptions">Point selling sticks</string>

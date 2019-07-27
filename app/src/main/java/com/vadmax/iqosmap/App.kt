@@ -1,6 +1,7 @@
 package com.vadmax.iqosmap
 
 import android.app.Application
+import com.google.android.gms.ads.MobileAds
 import com.vadmax.iqosmap.di.koin.module.dataModule
 import com.vadmax.iqosmap.di.koin.module.repositoryModule
 import com.vadmax.iqosmap.di.koin.module.retrofitModule
@@ -17,11 +18,13 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
 
+        MobileAds.initialize(this, getString(R.string.google_ads_id))
+
         startKoin {
             androidLogger(Level.DEBUG)
             androidContext(this@App)
             androidFileProperties()
-            modules(sharedModule, retrofitModule, dataModule, repositoryModule, vmModule)
+            modules(listOf(sharedModule, retrofitModule, dataModule, repositoryModule, vmModule))
         }
 
     }

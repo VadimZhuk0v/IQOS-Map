@@ -21,6 +21,7 @@ abstract class BaseActivity<VM : BaseViewModel<*>, B : ViewDataBinding> : AppCom
         }
 
         binding = DataBindingUtil.setContentView(this, layoutId)
+        binding.lifecycleOwner = this
         lifecycle.addObserver(viewModel)
     }
 

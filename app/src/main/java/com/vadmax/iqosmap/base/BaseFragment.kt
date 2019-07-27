@@ -17,6 +17,7 @@ abstract class BaseFragment<VM : BaseViewModel<*>, B : ViewDataBinding> : Fragme
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(layoutInflater, layoutId, container, false)
+        binding.lifecycleOwner = this
         lifecycle.addObserver(viewModel)
         return binding.root
     }

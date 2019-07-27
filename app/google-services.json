@@ -8,6 +8,35 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:848435220538:android:badc9e2b93d8793b",
+        "android_client_info": {
+          "package_name": "com.vadmax.drdrunk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "848435220538-225v3q8om8dr9kt09k985d76euflnm9t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKhvkiOfAs3wMLaIma3Wj_gS26WaYRfsY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "848435220538-225v3q8om8dr9kt09k985d76euflnm9t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:848435220538:android:52af72d3ac74bb4e",
         "android_client_info": {
           "package_name": "com.vadmax.iqosmap"
@@ -25,17 +54,16 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "848435220538-225v3q8om8dr9kt09k985d76euflnm9t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
-      }
+      },
+      "admob_app_id": "ca-app-pub-2137393606695859~3978245676"
     }
   ],
   "configuration_version": "1"

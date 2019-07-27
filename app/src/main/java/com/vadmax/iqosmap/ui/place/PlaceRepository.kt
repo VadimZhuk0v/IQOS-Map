@@ -4,6 +4,6 @@ import com.vadmax.iqosmap.base.BaseRepository
 
 class PlaceRepository : BaseRepository() {
 
-    suspend fun getPlace(id: Long) = dataManager.apiHelper.loadPlace(id).await()
+    suspend fun getPlace(id: Long) = dataManager.apiHelper.loadPlace(id)
 
 }
