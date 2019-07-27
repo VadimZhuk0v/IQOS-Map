@@ -17,14 +17,14 @@ android {
         }
     }
 
-    compileSdkVersion 28
+    compileSdkVersion 29
 
     defaultConfig {
         applicationId "com.vadmax.iqosmap"
         minSdkVersion 22
-        targetSdkVersion 28
-        versionCode 8
-        versionName "1.0.2.5"
+        targetSdkVersion 29
+        versionCode 9
+        versionName "1.0.2.6"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
